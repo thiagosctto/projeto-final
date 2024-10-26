@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo do Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="index.html">Voltar</a>
+            
+        </div>
+        
+    </header>
+
+    <div class="payment-container">
+        <h1>Resumo do Carrinho</h1>
+        <br>
+
+        
+        <div class="cart-summary">
+            <h2>Jogos no Carrinho</h2>
+            <ul id="cart-items">
+              
+            </ul>
+            <br>
+            <p>Total: <strong id="cart-total">R$ 0.00</strong></p>
+        </div>
+
+        <button type="button" class="finalizar-pagamento" onclick="window.location.href='cart.html';">Continuar para o Pagamento</button>
+
+    </div>
+
+    <script>
+        // Função para atualizar o total do carrinho na interface
+        function updateCartTotal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const total = cart.reduce((sum, item) => sum + (item.price || 0), 0);
+            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
+        }
+
+        // Função para atualizar os itens do carrinho
+        function updateCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = ''; // Limpa a lista atual
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li>O carrinho está vazio.</li>';
+            } else {
+                cart.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    const price = item.price; // Acessa o preço do item
+                    li.textContent = `${item.name} - R$ ${price ? price.toFixed(2) : '0.00'}`; // Verifica se o preço está definido
+                    
+                    // Botão para remover o item
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remover';
+                    removeButton.onclick = () => removeFromCart(index); // Chama a função de remoção
+                    
+                    li.appendChild(removeButton);
+                    cartItems.appendChild(li);
+                });
+            }
+            updateCartTotal(); // Atualiza o total
+        }
+
+        // Função para remover um item do carrinho
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove o item
+            localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o Local Storage
+            updateCartItems(); // Atualiza a lista no DOM
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = updateCartItems;
+    </script>
+</body>
+</html>
