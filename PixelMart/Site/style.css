@@ -16,7 +16,7 @@ header {
     color: #fff;
     padding: 30px 20px;
     display: flex;
-    justify-content: space-between; /* Mantém espaço entre os elementos da esquerda e direita */
+    justify-content: space-between; 
     align-items: center;
     position: sticky;
     top: 0;
@@ -30,14 +30,14 @@ header {
 .nav-center {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centraliza horizontalmente */
-    flex-grow: 1; /* Permite que a nav-center ocupe o espaço disponível */
+    justify-content: center; 
+    flex-grow: 1; 
 }
 
 header a {
     color: #fff;
     text-decoration: none;
-    margin: 0 10px; /* Espaçamento entre os links */
+    margin: 0 10px; 
     font-weight: bold;
     transition: color 0.3s;
 }
@@ -76,7 +76,7 @@ header a:hover {
 .search-bar {
     display: flex;
     align-items: center;
-    margin-left: 20px; /* Espaçamento entre os links e a barra de busca */
+    margin-left: 20px; 
 }
 
 .search-bar input {
@@ -253,23 +253,23 @@ header a:hover {
     background-color: #218838;
 }
 .finalizar-pagamento {
-    background-color: #28a745; /* Cor de fundo verde */
-    color: #fff; /* Cor do texto branca */
-    border: none; /* Remove a borda padrão */
-    padding: 10px 20px; /* Espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Muda o cursor ao passar o mouse */
-    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+    background-color: #28a745; 
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .finalizar-pagamento:hover {
-    background-color: #218838; /* Cor de fundo quando o mouse passa por cima */
-    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+    background-color: #218838; 
+    transform: scale(1.05); 
 }
 
 .finalizar-pagamento:active {
-    transform: scale(0.95); /* Efeito de redução ao clicar */
+    transform: scale(0.95); 
 }
 
 
@@ -352,11 +352,11 @@ header a:hover {
 .banner-container {
     display: flex;
     justify-content: center;
-    max-width: 100%; /* Mantém o tamanho do contêiner conforme a imagem */
+    max-width: 100%;
     margin: 80px auto;
     overflow: hidden;
     height: 600px;
-    position: relative; /* Permite que os elementos filhos sejam posicionados em relação a este contêiner */
+    position: relative; 
 }
 
 .banner-slide {
@@ -368,9 +368,9 @@ header a:hover {
 }
 
 .banner-slide img {
-    width: 100%; /* A imagem se ajusta ao contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-    max-height: 100%; /* Limita a altura máxima */
+    width: 100%;
+    height: auto;
+    max-height: 100%;
     object-fit: contain;
     box-sizing: border-box;
     border: 2px solid #96a6b7; 
@@ -385,26 +385,26 @@ header a:hover {
     position: absolute;
     padding: 16px;
     user-select: none;
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta para centralizar corretamente */
+    top: 50%; 
+    transform: translateY(-50%); 
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5); 
     border-radius: 5%;
 }
 
 .prev {
-    left: 300px; /* 10 pixels da borda esquerda */
+    left: 300px;
 }
 
 .next {
-    right: 300px; /* 10 pixels da borda direita */
+    right: 300px; 
 }
 
 .dot-container {
     text-align: center;
     padding: 0;
     position: absolute;
-    bottom: 110px; /* Posição acima da parte inferior */
+    bottom: 110px; 
     left: 50%;
     transform: translateX(-50%);
 }
