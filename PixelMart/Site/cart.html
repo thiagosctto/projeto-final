@@ -41,16 +41,12 @@
     </div>
 
     <script>
-        // Recupera o carrinho do Local Storage
+      
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Atualiza o total do carrinho na interface
         function updateCartTotal() {
             const total = cart.reduce((sum, item) => sum + item.price, 0);
             document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
         }
-
-        // Chama a função ao carregar a página
         window.onload = updateCartTotal;
     </script>
 </body>
