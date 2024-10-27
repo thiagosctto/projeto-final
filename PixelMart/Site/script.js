@@ -71,31 +71,31 @@ window.onload = function() {
 
 
 
-let slideIndex = 0; // Índice do slide atual
-showSlides(); // Exibe os slides ao carregar
+let slideIndex = 0; 
+showSlides();
 
 function plusSlides(n) {
-    showSlides(slideIndex += n); // Muda o slide atual
+    showSlides(slideIndex += n); 
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n - 1); // Altera para o slide específico
+    showSlides(slideIndex = n - 1); 
 }
 
 function showSlides(n = 0) {
     let slides = document.getElementsByClassName("banner-slide");
     let dots = document.getElementsByClassName("dot");
-    if (n >= slides.length) { slideIndex = 0; }    // Se exceder o número de slides, reinicia
-    if (n < 0) { slideIndex = slides.length - 1; } // Se for negativo, vai para o último slide
+    if (n >= slides.length) { slideIndex = 0; }    
+    if (n < 0) { slideIndex = slides.length - 1; } 
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Oculta todos os slides
-        dots[i].className = dots[i].className.replace(" active", ""); // Remove a classe ativa dos pontos
+        slides[i].style.display = "none"; 
+        dots[i].className = dots[i].className.replace(" active", ""); 
     }
-    slides[slideIndex].style.display = "block"; // Exibe o slide atual
-    dots[slideIndex].className += " active";    // Adiciona a classe ativa ao ponto atual
+    slides[slideIndex].style.display = "block"; 
+    dots[slideIndex].className += " active";    
 }
 
-// Muda de slide automaticamente a cada 5 segundos
+
 setInterval(function() {
     plusSlides(1);
-}, 5000);
+}, 10000);
