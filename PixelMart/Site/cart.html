@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Pagamento</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="cart_summary.html">Voltar</a>
+        </div>
+    </header>
+
+    <div class="payment-container">
+        <h2>Carrinho de Pagamento</h2>
+        <br>
+        <br>
+        <div class="cart-summary">
+            <p>Total: <strong id="cart-total">R$ 0.00</strong></p>
+        </div>
+
+        <form class="payment-form" onsubmit="finalizePayment(event)">
+            <h2>Informações do Cartão</h2>
+            <br>
+            <label for="card-name">Nome no Cartão</label>
+            <input type="text" id="card-name" name="card-name" required>
+
+            <label for="card-number">Número do Cartão</label>
+            <input type="text" id="card-number" name="card-number" required>
+
+            <label for="expiry-date">Data de Validade (MM/AA)</label>
+            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/AA">
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <button type="submit" class="finalizar-pagamento">Finalizar Pagamento</button>
+        </form>
+    </div>
+
+    <script>
+        // Recupera o carrinho do Local Storage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Atualiza o total do carrinho na interface
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = updateCartTotal;
+    </script>
+</body>
+</html>

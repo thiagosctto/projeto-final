@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelMart</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <header>
+        <div class="nav-center">
+            <a href="index.html">Início</a>
+            <div class="dropdown">
+                <a href="games.html">PC</a>
+                <div class="dropdown-content">
+                    <a href="steam.html">Steam</a>
+                    <a href="epic.html">Epic</a>
+                    <a href="rockstar.html">Rockstar</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="games.html">Console</a>
+                <div class="dropdown-content">
+                    <a href="ps4.html">PS4</a>
+                    <a href="ps5.html">PS5</a>
+                    <a href="xbox.html">Xbox</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="games.html">Mobile</a>
+                <div class="dropdown-content">
+                    <a href="appstore.html">AppStore</a>
+                    <a href="playstore.html">Play Store</a>
+                </div>
+            </div>
+            <!-- Mecanismo de busca -->
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Buscar jogos..." onkeydown="if(event.key === 'Enter') searchGames()">
+                <button onclick="searchGames()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="login.html">Conta <i class="fas fa-user"></i></a>
+            <a href="cart_summary.html">Carrinho <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+        </div>
+    </header>
+
+   <!-- Jogos Disponíveis -->
+     <div id="games">
+        <h1>Jogos Disponíveis</h1>
+        <div id="games-grid" class="games-grid">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x400" alt="Jogo 1">
+                <h3>Jogo 1</h3>
+                <p>R$ 59,99</p>
+                <button onclick="addToCart({ id: 1, name: 'Jogo 1', price: 59.99 })">Adicionar ao Carrinho</button>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x400" alt="Jogo 2">
+                <h3>Jogo 2</h3>
+                <p>R$ 99,99</p>
+                <button onclick="addToCart({ id: 2, name: 'Jogo 2', price: 99.99 })">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Adicione mais jogos aqui -->
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Incluindo o arquivo JavaScript -->
+</body>
+</html>
