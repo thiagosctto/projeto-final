@@ -45,17 +45,17 @@
         function updateCartItems() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = ''; // Limpa a lista atual
+            cartItems.innerHTML = ''; 
 
             if (cart.length === 0) {
                 cartItems.innerHTML = '<li>O carrinho está vazio.</li>';
             } else {
                 cart.forEach((item, index) => {
                     const li = document.createElement('li');
-                    const price = item.price; // Acessa o preço do item
-                    li.textContent = `${item.name} - R$ ${price ? price.toFixed(2) : '0.00'}`; // Verifica se o preço está definido
+                    const price = item.price; 
+                    li.textContent = `${item.name} - R$ ${price ? price.toFixed(2) : '0.00'}`; 
 
-                    // Botão para remover o item
+                    
                     const removeButton = document.createElement('button');
                     removeButton.textContent = 'Remover';
                     removeButton.onclick = () => removeFromCart(index); // Chama a função de remoção
@@ -64,18 +64,18 @@
                     cartItems.appendChild(li);
                 });
             }
-            updateCartTotal(); // Atualiza o total
+            updateCartTotal(); 
         }
 
         // Função para remover um item do carrinho
         function removeFromCart(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1); // Remove o item
-            localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o Local Storage
-            updateCartItems(); // Atualiza a lista no DOM
+            cart.splice(index, 1); 
+            localStorage.setItem('cart', JSON.stringify(cart)); 
+            updateCartItems(); 
         }
 
-        // Chama a função ao carregar a página
+      
         window.onload = updateCartItems;
     </script>
 </body>
