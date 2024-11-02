@@ -127,14 +127,7 @@ header a:hover {
     background-color: #218838;
 }
 
-.button-danger {
-    background-color: #ff4c4c;
-    color: white;
-}
 
-.button-danger:hover {
-    background-color: #e63939;
-}
 
 /* Grid de Jogos */
 .games-grid {
@@ -156,7 +149,7 @@ header a:hover {
 
 .game-card img {
     width: 100%;
-    height: auto;
+    height: 76.5%;
 }
 
 .game-card h3 {
@@ -176,6 +169,7 @@ header a:hover {
     padding: 10px;
     width: 100%;
     cursor: pointer;
+    top: 0;
     font-size: 1rem;
 }
 
@@ -198,156 +192,6 @@ header a:hover {
     margin-bottom: 20px;
 }
 
-/* Login, Criação de Conta e Pagamento */
-.login-container,
-.create-account-container,
-.payment-container {
-    background-color: #637994;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    max-width: 400px;
-    margin: 50px auto;
-}
-
-.login-container h1,
-.create-account-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-container form,
-.create-account-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-container label,
-.create-account-container label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.login-container input,
-.create-account-container input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.login-container button,
-.create-account-container button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-.login-container button:hover,
-.create-account-container button:hover {
-    background-color: #218838;
-}
-.finalizar-pagamento {
-    background-color: #28a745; 
-    color: #fff; 
-    border: none; 
-    padding: 10px 20px; 
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer; 
-    transition: background-color 0.3s, transform 0.2s; 
-}
-
-.finalizar-pagamento:hover {
-    background-color: #218838; 
-    transform: scale(1.05); 
-}
-
-.finalizar-pagamento:active {
-    transform: scale(0.95); 
-}
-
-
-/* Gênero */
-.gender-inputs {
-    margin-bottom: 20px;
-}
-
-.gender-inputs h2 {
-    margin-bottom: 10px;
-}
-
-.gender-group {
-    margin-bottom: 10px;
-}
-
-/* Carrinho de Compras */
-.cart-summary {
-    margin-bottom: 30px;
-}
-
-.cart-summary h2 {
-    margin-bottom: 10px;
-}
-
-.cart-summary p {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-#cart-items {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#cart-items li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-#cart-items li button {
-    background-color: #ff4c4c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#cart-items li button:hover {
-    background-color: #e63939;
-}
-
-/* Formulário de Pagamento */
-.payment-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.payment-form input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
 
 .banner-container {
     display: flex;
@@ -370,7 +214,7 @@ header a:hover {
 .banner-slide img {
     width: 100%;
     height: auto;
-    max-height: 100%;
+    max-height: 75%;
     object-fit: contain;
     box-sizing: border-box;
     border: 2px solid #96a6b7; 
@@ -385,7 +229,7 @@ header a:hover {
     position: absolute;
     padding: 16px;
     user-select: none;
-    top: 50%; 
+    top: 40%; 
     transform: translateY(-50%); 
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.5); 
@@ -393,11 +237,11 @@ header a:hover {
 }
 
 .prev {
-    left: 300px;
+    left: 250px;
 }
 
 .next {
-    right: 300px; 
+    right: 250px; 
 }
 
 .dot-container {
