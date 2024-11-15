@@ -18,13 +18,13 @@ public class Usuario {
 
 	@Column(name = "nome", length = 100, nullable = true)
 	private String nome;
-	@Column(name = "genero", length = 10)
+	@Column(name = "genero", length = 30)
 	private String genero;
-	@Column(name = "cpf", length = 11, nullable = true)
+	@Column(name = "cpf", length = 50, nullable = true)
 	private String cpf;
-	@Column(name = "email", length = 100, nullable = true)
+	@Column(name = "email", length = 150, nullable = true)
 	private String email;
-	@Column(name = "senha", length = 100, columnDefinition = "TEXT", nullable = true)
+	@Column(name = "senha", length = 150, columnDefinition = "TEXT", nullable = true)
 	private String senha;
 
 	public Integer getId() {
