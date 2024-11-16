@@ -1,7 +1,6 @@
 const formulario = document.querySelector("form");
 
 const Inome = document.querySelector("#nome_completo"); 
-const Igenero = document.querySelector("#genero"); 
 const Icpf = document.querySelector("#cpf");
 const Iemail = document.querySelector("#email");
 const Isenha = document.querySelector("#password");
@@ -10,8 +9,7 @@ function cadastrar(event) {
     event.preventDefault();
 
     const dados = {
-        nome: Inome.value, 
-        genero: Igenero.value || null,  
+        nome: Inome.value,  
         cpf: Icpf.value,
         email: Iemail.value,
         senha: Isenha.value
@@ -46,7 +44,6 @@ function cadastrar(event) {
 
 function limpar() {
     Inome.value = "";
-    Igenero.value = ""; 
     Icpf.value = "";
     Iemail.value = "";
     Isenha.value = "";
