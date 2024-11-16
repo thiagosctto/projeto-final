@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const data = await res.json(); // Processa a resposta JSON
                 alert("Login realizado com sucesso!");
                 // Aqui você pode adicionar ações pós-login, como redirecionamento
-                window.location.replace = "/index.html";
+                window.location.href = 'index.html'; // Redireciona para a página de sucesso
             } else {
                 alert("Usuário ou senha incorretos.");
             }

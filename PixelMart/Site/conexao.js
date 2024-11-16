@@ -1,7 +1,7 @@
 const formulario = document.querySelector("form");
 
 const Inome = document.querySelector("#nome_completo"); 
-const Igenero = document.querySelector("#genero"); // Alterado para capturar pelo ID diretamente
+const Igenero = document.querySelector("#genero"); 
 const Icpf = document.querySelector("#cpf");
 const Iemail = document.querySelector("#email");
 const Isenha = document.querySelector("#password");
@@ -11,13 +11,12 @@ function cadastrar(event) {
 
     const dados = {
         nome: Inome.value, 
-        genero: Igenero.value || null,  // Captura o valor diretamente
+        genero: Igenero.value || null,  
         cpf: Icpf.value,
         email: Iemail.value,
         senha: Isenha.value
     };
 
-    // Verifique se o nome não está vazio
     if (!dados.nome) {
         alert("O nome completo é obrigatório.");
         return;
@@ -35,6 +34,7 @@ function cadastrar(event) {
         const data = await res.json();
         if (res.ok) {
             limpar(); 
+            window.location.href = 'login.html'; // Redireciona para a página de sucesso
         } else {
             alert(`Erro: ${data.message || 'Erro desconhecido'}`);
         }
@@ -46,7 +46,7 @@ function cadastrar(event) {
 
 function limpar() {
     Inome.value = "";
-    Igenero.value = ""; // Limpa o valor do campo de gênero
+    Igenero.value = ""; 
     Icpf.value = "";
     Iemail.value = "";
     Isenha.value = "";

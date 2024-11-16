@@ -41,13 +41,78 @@
     </div>
 
     <script>
-      
+        // Recupera o carrinho do localStorage e atualiza o total
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
         function updateCartTotal() {
             const total = cart.reduce((sum, item) => sum + item.price, 0);
             document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
         }
+    
+        // Validação e envio das informações do pagamento
+        async function finalizePayment(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+    
+            // Recuperar os valores do formulário
+            const cardName = document.getElementById('card-name').value.trim();
+            const cardNumber = document.getElementById('card-number').value.trim();
+            const expiryDate = document.getElementById('expiry-date').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+    
+            // Validações simples
+            if (!cardName || !cardNumber || !expiryDate || !cvv) {
+                alert("Por favor, preencha todos os campos do formulário.");
+                return;
+            }
+    
+            if (cardNumber.length !== 16 || isNaN(cardNumber)) {
+                alert("O número do cartão deve conter 16 dígitos.");
+                return;
+            }
+    
+            if (cvv.length !== 3 || isNaN(cvv)) {
+                alert("O CVV deve conter 3 dígitos.");
+                return;
+            }
+    
+            // Simulação de envio para o backend
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+    
+            const paymentData = {
+                nomeNoCartao: cardName,
+                numeroDoCartao: cardNumber,
+                dataValidade: expiryDate,
+                cvv: cvv,
+                valorTotal: total
+            };
+    
+            try {
+                // Simulação de requisição POST
+                const response = await fetch('http://localhost:8080/pagamentos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(paymentData)
+                });
+    
+                if (response.ok) {
+                    const result = await response.json();
+                    alert("Pagamento realizado com sucesso!");
+                    localStorage.removeItem('cart'); // Limpa o carrinho após o pagamento
+                    window.location.href = 'index.html'; // Redireciona para a página de sucesso
+                } else {
+                    const errorData = await response.json();
+                    alert(errorData.message || "Ocorreu um erro ao processar o pagamento.");
+                }
+            } catch (error) {
+                alert("Erro ao se conectar ao servidor. Tente novamente mais tarde.");
+                console.error(error);
+            }
+        }
+    
+        // Atualiza o total no carregamento da página
         window.onload = updateCartTotal;
-    </script>
+    </script>  
 </body>
 </html>
