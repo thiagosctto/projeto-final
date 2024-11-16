@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.PixelMart.projeto.DAO.ILogins;
 import br.com.PixelMart.projeto.DAO.IUsuario;
+import br.com.PixelMart.projeto.model.Logins;
 import br.com.PixelMart.projeto.model.Usuario;
 
 @RestController
@@ -26,6 +28,10 @@ public class UsuarioController{
 	@Autowired
 	private IUsuario dao;
 	
+	@Autowired
+    private ILogins loginDao;
+	
+	
 	@GetMapping 
 	public List<Usuario> listaUsuario (){
 		return (List<Usuario>) dao.findAll();
@@ -34,6 +40,10 @@ public class UsuarioController{
 	@PostMapping
 	public Usuario criarUsuario (@RequestBody Usuario usuario) {
 		Usuario usuarionovo = dao.save(usuario);
+		Logins novoLogin = new Logins();
+        novoLogin.setUsuario(usuarionovo.getEmail()); 
+        novoLogin.setSenha(usuarionovo.getSenha()); 
+        loginDao.save(novoLogin);
 		return usuarionovo;
 	}
 	
