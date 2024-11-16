@@ -18,8 +18,6 @@ public class Usuario {
 
 	@Column(name = "nome", length = 100, nullable = true)
 	private String nome;
-	@Column(name = "genero", length = 30)
-	private String genero;
 	@Column(name = "cpf", length = 50, nullable = true)
 	private String cpf;
 	@Column(name = "email", length = 150, nullable = true)
@@ -41,14 +39,6 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
 	}
 
 	public String getCpf() {
