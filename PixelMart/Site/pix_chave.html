@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pix</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #151d27;
+        }
+
+        /* Cabeçalho */
+        header {
+    background-color: #151d27;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 20px;
+    height: 80px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-bottom: 2px solid #ffffff;
+}
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+       
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-left a:hover {
+            
+        }
+
+        /* Container principal */
+        .create-account-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        /* Bloco de informações */
+        .pix-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .pix-image {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .pix-info p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Estilo do botão */
+        .copy-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+
+        .copy-message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="index.html" class="back-link">Voltar</a>
+        </div>
+    </header>
+
+    <div class="create-account-container">
+        <div class="pix-info">
+            <img src="img/pix.png" alt="Pix" class="pix-image">
+            <p><strong>Chave PIX:</strong> <span id="pix-key">4f7c8e12-9d62-4b80-8e62-3f9a5e2fcb2a</span></p>
+            <button class="copy-button" onclick="copyKey()">Copiar Chave PIX</button>
+            <p id="copy-message" class="copy-message">Chave copiada com sucesso!</p>
+        </div>
+    </div>
+
+    <script>
+        function copyKey() {
+            var pixKey = document.getElementById("pix-key").innerText;
+            var tempInput = document.createElement("input");
+            document.body.appendChild(tempInput);
+            tempInput.value = pixKey;
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Exibir mensagem de sucesso
+            var message = document.getElementById("copy-message");
+            message.style.display = "block";
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 2000);
+        }
+
+        // Função para gerar chave aleatória
+        function generateRandomKey() {
+            var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var key = '';
+            for (var i = 0; i < 36; i++) {
+                key += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return key;
+        }
+
+        // Substituir chave PIX com uma chave aleatória ao carregar a página
+        window.onload = function() {
+            var newKey = generateRandomKey();
+            document.getElementById("pix-key").innerText = newKey;
+        };
+    </script>
+</body>
+</html>
