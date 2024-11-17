@@ -1,0 +1,221 @@
+/* Resetando margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #151d27;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #151d27;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 20px;
+    height: 80px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-bottom: 2px solid #ffffff;
+}
+
+.nav-left a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Contêiner de pagamento */
+.payment-container {
+    background-color: #273b53;
+    padding: 40px;
+    margin: 20px auto;
+    width: 85%;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Título */
+.payment-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Resumo do carrinho */
+.cart-summary {
+    flex: 1;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #2a3d54;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-summary h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#cart-items {
+    list-style: none;
+    padding-left: 0;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid #ddd;
+    padding: 10px 0;
+    color: white;
+    font-size: 18px;
+}
+
+#cart-items li img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #bb1c1c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #9e1717;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Botões específicos */
+.continuar-comprando {
+    background-color: #17a2b8;
+    margin-right: 10px;
+}
+
+.continuar-comprando:hover {
+    background-color: #138496;
+}
+
+.finalizar-pagamento {
+    background-color: #ffc107;
+}
+
+.finalizar-pagamento:hover {
+    background-color: #e0a800;
+}
+
+strong {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .payment-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .cart-summary {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .finalizar-pagamento {
+        margin-top: 20px;
+    }
+}
+
+/* Layout geral para o contêiner */
+.payment-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Estilos da aba de pagamento */
+.payment-sidebar {
+    width: 280px;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    background-color: #2a3d54;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-sidebar h2 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method {
+    padding: 50px;
+    margin-bottom: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+}
+
+.payment-method:hover {
+    transform: translateY(-5px);
+    background-color: #252525;
+}
+
+.payment-method.selected {
+    background-color: #0080ff;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 128, 255, 0.5);
+}
+
+.payment-method img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.payment-method span {
+    display: block;
+    margin-top: 10px;
+}
