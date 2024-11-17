@@ -1,4 +1,5 @@
-// Recupera o carrinho do Local Storage
+
+// Carrinho de compras
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Função para adicionar um jogo ao carrinho
@@ -7,6 +8,7 @@ function addToCart(game) {
     if (existingItemIndex === -1) {
         cart.push(game);
         localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartItems();
         updateCartDisplay();
         alert(`${game.name} foi adicionado ao carrinho!`);
     } else {
@@ -32,24 +34,29 @@ function updateCartDisplay() {
 
 // Função para atualizar os itens do carrinho
 function updateCartItems() {
-    const cartItems = document.getElementById('cart-items');
-    if (!cartItems) return;
+    const cartItemsContainer = document.getElementById('cart-items');
+    const buttonsContainer = document.getElementById('buttons-container'); // Contêiner dos botões
+    if (!cartItemsContainer || !buttonsContainer) return;
 
-    cartItems.innerHTML = '';
+    cartItemsContainer.innerHTML = ''; // Limpa o conteúdo existente
 
     if (cart.length === 0) {
-        cartItems.innerHTML = '<li>O carrinho está vazio.</li>';
+        cartItemsContainer.innerHTML = '<p style="color: red; font-size: 18px;">Seu carrinho está vazio.</p>';
+        buttonsContainer.style.display = 'none';  // Esconde os botões
     } else {
+        buttonsContainer.style.display = 'block';  // Exibe os botões
         cart.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.onclick = () => removeFromCart(index);
-
-            li.appendChild(removeButton);
-            cartItems.appendChild(li);
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="item-info">
+                    <h2>${item.name}</h2>
+                    <p class="price">R$ ${item.price.toFixed(2)}</p>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${index})">Remover</button>
+            `;
+            cartItemsContainer.appendChild(cartItem);
         });
     }
 
@@ -63,39 +70,57 @@ function removeFromCart(index) {
     updateCartItems();
 }
 
+// Função para finalizar a compra
+function finalizePurchase() {
+    alert('Compra finalizada com sucesso!');
+    localStorage.removeItem('cart');
+    updateCartItems();
+}
+
+// Função para continuar comprando
+function continueShopping() {
+    window.location.href = 'index.html';
+}
+
 // Atualiza os itens do carrinho ao carregar a página
 window.onload = function() {
     updateCartItems();
     updateCartDisplay();
 };
 
-
-
-let slideIndex = 0; 
+// Slide banner
+let slideIndex = 0;
 showSlides();
 
 function plusSlides(n) {
-    showSlides(slideIndex += n); 
+    showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n - 1); 
+    showSlides(slideIndex = n - 1);
 }
 
 function showSlides(n = 0) {
-    let slides = document.getElementsByClassName("banner-slide");
-    let dots = document.getElementsByClassName("dot");
-    if (n >= slides.length) { slideIndex = 0; }    
-    if (n < 0) { slideIndex = slides.length - 1; } 
+    const slides = document.getElementsByClassName("banner-slide");
+    const dots = document.getElementsByClassName("dot");
+    if (n >= slides.length) { slideIndex = 0; }
+    if (n < 0) { slideIndex = slides.length - 1; }
+
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; 
-        dots[i].className = dots[i].className.replace(" active", ""); 
+        slides[i].style.display = "none";
+        dots[i].className = dots[i].className.replace(" active", "");
     }
-    slides[slideIndex].style.display = "block"; 
-    dots[slideIndex].className += " active";    
+
+    slides[slideIndex].style.display = "block";
+    dots[slideIndex].className += " active";
 }
+
+
+console.log(cart);
 
 
 setInterval(function() {
     plusSlides(1);
+
+
 }, 10000);

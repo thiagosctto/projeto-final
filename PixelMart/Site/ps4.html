@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelMart</title>
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Barra de navegação -->
     <header>
+        <div class="nav-left">
+            <div class="logo">
+                <img src="img/pixel.png" alt="Logo">
+            </div>
+            <span>Pixel Mart</span>
+        </div>
         <div class="nav-center">
             <a href="index.html">Início</a>
             <div class="dropdown">
-                <a href="games.html">PC</a>
+                <a>PC</a>
                 <div class="dropdown-content">
                     <a href="steam.html">Steam</a>
                     <a href="epic.html">Epic</a>
@@ -22,7 +26,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="games.html">Console</a>
+                <a>Console</a>
                 <div class="dropdown-content">
                     <a href="ps4.html">PS4</a>
                     <a href="ps5.html">PS5</a>
@@ -30,13 +34,12 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="games.html">Mobile</a>
+                <a>Mobile</a>
                 <div class="dropdown-content">
                     <a href="appstore.html">AppStore</a>
                     <a href="playstore.html">Play Store</a>
                 </div>
             </div>
-            <!-- Mecanismo de busca -->
             <div class="search-bar">
                 <input type="text" id="search" placeholder="Buscar jogos..." onkeydown="if(event.key === 'Enter') searchGames()">
                 <button onclick="searchGames()"><i class="fas fa-search"></i></button>
@@ -49,22 +52,27 @@
         </div>
     </header>
 
-   <!-- Jogos Disponíveis -->
-     <div id="games">
+    <div id="games">
         <div id="games-grid" class="games-grid">
             <div class="game-card">
-                <img src="https://via.placeholder.com/300x400" alt="Jogo 1">
-                <h3>Jogo 1</h3>
-                <p>R$ 59,99</p>
-                <button onclick="addToCart({ id: 1, name: 'Jogo 1', price: 59.99 })">Adicionar ao Carrinho</button>
+                <img src="img/god1.png" alt="">
+                <h3>God of War</h3>
+                <p>R$ 99,99</p>
+                <button onclick="addToCart({ id: 1, name: 'God of War', price: 99.99, image: 'img/god1.png' })">Adicionar ao Carrinho</button>
             </div>
             <div class="game-card">
-                <img src="https://via.placeholder.com/300x400" alt="Jogo 2">
-                <h3>Jogo 2</h3>
-                <p>R$ 99,99</p>
-                <button onclick="addToCart({ id: 2, name: 'Jogo 2', price: 99.99 })">Adicionar ao Carrinho</button>
+                <img src="img/god2.png" alt="">
+                <h3>God of War Ragnarok</h3>
+                <p>R$ 199,99</p>
+                <button onclick="addToCart({ id: 2, name: 'God of War Ragnarok', price: 199.99, image: 'img/god2.png' })">Adicionar ao Carrinho</button>
             </div>
-           
+            <div class="game-card">
+                <img src="img/spider.png" alt="">
+                <h3>God of War Ragnarok</h3>
+                <p>R$ 199,99</p>
+                <button onclick="addToCart({ id: 3, name: 'Spider Man', price: 199.99, image: 'img/spider.png' })">Adicionar ao Carrinho</button>
+            </div>
+            
         </div>
     </div>
 

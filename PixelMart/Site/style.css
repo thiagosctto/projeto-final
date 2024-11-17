@@ -14,17 +14,76 @@ body {
 header {
     background-color: #151d27;
     color: #fff;
-    padding: 30px 20px;
     display: flex;
     justify-content: space-between; 
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    padding: 20px 20px; /* Reduzido para evitar expansão desnecessária */
+    height: 80px; /* Altura fixa */
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     border-bottom: 2px solid #ffffff; 
 }
+
+/* Contêiner do logo */
+.nav-left {
+    display: flex;
+    align-items: center; /* Alinha o texto e o logo verticalmente */
+    gap: 10px; /* Espaço entre o logo e o texto */
+}
+
+/* Estilo do texto ao lado do logo */
+.nav-left span {
+    font-size: 18px; /* Ajuste o tamanho do texto conforme necessário */
+    color: #fff; /* Cor do texto */
+    font-weight: bold; /* Destacar o texto */
+}
+/* Logo ajustável */
+.logo img {
+    height: 100px;
+    width: auto; 
+    object-fit: contain; 
+}
+
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
 
 /* Centraliza a navegação e a barra de busca */
 .nav-center {
@@ -156,7 +215,7 @@ header a:hover {
 
 .game-card img {
     width: 100%;
-    height: auto;
+    height: 73%;
 }
 
 .game-card h3 {
@@ -202,7 +261,7 @@ header a:hover {
 .login-container,
 .create-account-container,
 .payment-container {
-    background-color: #637994;
+    background-color: #273b53;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 40px;
@@ -214,18 +273,22 @@ header a:hover {
 .create-account-container h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: white;
 }
 
 .login-container form,
 .create-account-container form {
     display: flex;
     flex-direction: column;
+    color: white;
+    
 }
 
 .login-container label,
 .create-account-container label {
     margin-bottom: 5px;
     font-weight: bold;
+    border: black;
 }
 
 .login-container input,

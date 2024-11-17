@@ -4,79 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumo do Carrinho</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart_sumarry.css">
 </head>
 <body>
     <header>
         <div class="nav-left">
             <a href="index.html">Voltar</a>
-
         </div>
-
     </header>
 
     <div class="payment-container">
-        <h1>Resumo do Carrinho</h1>
-        <br>
-
-
         <div class="cart-summary">
+            <h1>Resumo do Carrinho</h1>
             <h2>Jogos no Carrinho</h2>
             <ul id="cart-items">
-
+                <!-- Itens do carrinho serão carregados aqui -->
             </ul>
             <br>
             <p>Total: <strong id="cart-total">R$ 0.00</strong></p>
+            <div id="buttons-container">
+                <button type="button" class="continuar-comprando" onclick="window.location.href='index.html';">Continuar comprando</button>
+                <button type="button" class="finalizar-pagamento" onclick="continueToPayment()">Continuar para o Pagamento</button>
+            </div>
         </div>
 
-        <button type="button" class="finalizar-pagamento" onclick="window.location.href='cart.html';">Continuar para o Pagamento</button>
-
+        <!-- Aba de métodos de pagamento -->
+        <div class="payment-sidebar">
+            <h2>Métodos de Pagamento</h2>
+            <div class="payment-methods">
+                <div class="payment-method" id="pix" onclick="selectPaymentMethod('pix')">
+                    
+                    <span>Pix</span>
+                </div>
+                <div class="payment-method" id="cartao" onclick="selectPaymentMethod('cartao')">
+                    
+                    <span>Cartão de Crédito</span>
+                </div>
+                <div class="payment-method" id="boleto" onclick="selectPaymentMethod('boleto')">
+                  
+                    <span>Boleto Bancário</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Função para atualizar o total do carrinho na interface
         function updateCartTotal() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const total = cart.reduce((sum, item) => sum + (item.price || 0), 0);
             document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
         }
 
-        // Função para atualizar os itens do carrinho
         function updateCartItems() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = ''; 
+            cartItems.innerHTML = '';
 
             if (cart.length === 0) {
                 cartItems.innerHTML = '<li>O carrinho está vazio.</li>';
             } else {
                 cart.forEach((item, index) => {
                     const li = document.createElement('li');
-                    const price = item.price; 
-                    li.textContent = `${item.name} - R$ ${price ? price.toFixed(2) : '0.00'}`; 
-
-                    
+                    const price = item.price;
+                    li.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px;">
+                        ${item.name} - R$ ${price ? price.toFixed(2) : '0.00'}
+                    `;
                     const removeButton = document.createElement('button');
                     removeButton.textContent = 'Remover';
-                    removeButton.onclick = () => removeFromCart(index); // Chama a função de remoção
-
+                    removeButton.onclick = () => removeFromCart(index);
                     li.appendChild(removeButton);
                     cartItems.appendChild(li);
                 });
             }
-            updateCartTotal(); 
         }
 
-        // Função para remover um item do carrinho
         function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1); 
-            localStorage.setItem('cart', JSON.stringify(cart)); 
-            updateCartItems(); 
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartItems();
+            updateCartTotal();
         }
 
-      
-        window.onload = updateCartItems;
+        function selectPaymentMethod(method) {
+            // Desmarcar todas as opções
+            const methods = document.querySelectorAll('.payment-method');
+            methods.forEach(methodDiv => methodDiv.classList.remove('selected'));
+
+            // Marcar a opção selecionada
+            const selectedMethod = document.getElementById(method);
+            selectedMethod.classList.add('selected');
+            localStorage.setItem('paymentMethod', method); // Armazenar o método de pagamento
+        }
+
+        function continueToPayment() {
+            const selectedMethod = localStorage.getItem('paymentMethod');
+            if (selectedMethod) {
+                // Redirecionar para a página de pagamento correspondente
+                if (selectedMethod === 'pix') {
+                    window.location.href = 'pix_payment.html';
+                } else if (selectedMethod === 'cartao') {
+                    window.location.href = 'cartao_payment.html';
+                } else if (selectedMethod === 'boleto') {
+                    window.location.href = 'page_not_found.html';
+                }
+            } else {
+                alert('Por favor, selecione um método de pagamento.');
+            }
+        }
+
+        window.onload = function() {
+            updateCartItems();
+            updateCartTotal();
+        }
     </script>
 </body>
 </html>
