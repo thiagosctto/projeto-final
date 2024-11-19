@@ -1,0 +1,10 @@
+Diagrama de casos de uso
+
+Texto corrido:
+
+Fazer login na plataforma, caso não lembre a senha ou login, o mesmo deve realizar a Recuperação do login ou senha (Por meio de um número de telefone ou e-mail vinculado). 
+Agora, caso não tiver login, deve realizar o cadastro -> Cadastrar-se na plataforma (Incluir e-mail, senha, dados pessoais), após o cadastro, o usuário deve Confirmar o cadastro por meio do e-mail ou SMS; 
+Ao fazer login, ele tem a aba Minha conta, onde ele pode atualizar os dados pessoais, Atualizar senha ou e-mail,/ Adicionar endereço de entrega ou gerenciar os endereços (edição e exclusão); 
+-> Voltar a tela inicial e Pode Adicionar jogos ao carrinho e Editar o carrinho -> Pode  Visualizar os seus pedidos, Criar um pedido, selecionando um ou mais jogos, Editar esse pedido caso ainda não tiver sido efetivado; 
+Após a compra, o usuário tem o direito de pedir reembolso em até 7 dias; Adicionar forma de pagamento (Cartão débito/Crédito), e/ou selecionar essa forma de pagamento; -> O usuário também pode Adicionar cupom de desconto, assim como,  
+Excluir cupom de desconto; -> Visualizar detalhes da compra;  Visualizar Histórico de compras e Refazer uma compra;
